@@ -204,13 +204,13 @@ a:hover {
     <script>
         // Added basic JavaScript for potential interactivity, e.g., showing loading spinner on button clicks.
         // Example: Show spinner when navigating to pages (simulate loading).
-        document.querySelectorAll('.button').forEach(button => {
+        document.querySelectorAll('.button').forEach(function(button) {
             button.addEventListener('click', function(e) {
                 // Prevent default to show spinner, then redirect.
                 e.preventDefault();
                 document.querySelector('.loading').style.display = 'block';
-                setTimeout(() => {
-                    window.location.href = this.href;
+                setTimeout(function() {
+                    window.location.href = button.href;
                 }, 1000); // Simulate 1-second loading.
             });
         });
