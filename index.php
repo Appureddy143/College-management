@@ -1,5 +1,6 @@
 <?php
 session_start();
+// Note: session_start() is included, but it's not used in this static page. If sessions are needed later, it's ready.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,6 +110,7 @@ a:hover {
     margin: 10px;
     display: inline-block;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .buttons .button:hover {
@@ -162,8 +164,7 @@ a:hover {
         padding: 12px 20px;
     }
 }
-
-</style>
+    </style>
 </head>
 <body>
     <!-- Background Video -->
@@ -177,7 +178,10 @@ a:hover {
     <!-- Main Content -->
     <div class="main-content">
         <div class="navbar">
-
+            <!-- Added navbar links for better navigation. Assumed links based on context. -->
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact</a>
         </div>
 
         <div class="content">
@@ -198,7 +202,18 @@ a:hover {
 
     <!-- Custom Scripts -->
     <script>
-        // You can add any JavaScript for interactive features here
+        // Added basic JavaScript for potential interactivity, e.g., showing loading spinner on button clicks.
+        // Example: Show spinner when navigating to pages (simulate loading).
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Prevent default to show spinner, then redirect.
+                e.preventDefault();
+                document.querySelector('.loading').style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 1000); // Simulate 1-second loading.
+            });
+        });
     </script>
 </body>
 </html>
